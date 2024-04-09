@@ -44,7 +44,7 @@
                                                     <td>{{ $survey->total_score_survey }}</td>
                                                     <td>{{ $survey->total_score_approved }}</td>
                                                     <td>{{ $survey->created_at->format('d, M Y h:i a') }}</td>
-                                                    <td>{{ $survey->approved_at->format('d, M Y h:i a') }}</td>
+                                                    <td>{{ $survey->approved_at }}</td>
                                                     <td><a href="{{ route('form.survey.approve', encrypt($survey->id)) }}">{{ $survey->status }}</a></td>
                                                     <td class="text-center"><a href="{{ route('form.survey.edit', encrypt($survey->id)) }}">Edit</a></td>
                                                 </tr>
