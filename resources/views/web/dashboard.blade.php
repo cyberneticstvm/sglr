@@ -12,7 +12,7 @@
                     </ul>
                     <div>
                         <div class="btn-wrapper">
-                            <a href="{{ route('form.survey') }}" class="btn btn-primary text-white me-0"><i class="icon-download"></i>Take Survey</a>
+                            <a href="{{ route('form.survey') }}" class="btn btn-primary text-white me-0"><i class="icon-download"></i>Get Assessment Rating</a>
                         </div>
                     </div>
                 </div>

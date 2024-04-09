@@ -10,7 +10,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('form.survey') }}">
                 <i class="menu-icon mdi mdi-floor-plan"></i>
-                <span class="menu-title">Survey</span>
+                <span class="menu-title">Assessments</span>
             </a>
         </li>
         <li class="nav-item">

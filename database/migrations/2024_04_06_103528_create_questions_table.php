@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('management')->nullable();
             $table->string('infrastructure')->nullable();
+            $table->string('infrastructure')->nullable();
             $table->string('parameter')->nullable();
             $table->text('indicator')->nullable();
             $table->smallInteger('question_group')->nullable();
