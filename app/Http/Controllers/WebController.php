@@ -231,12 +231,16 @@ class WebController extends Controller
 
     public function userRegister()
     {
-        $users = User::when(Auth::user()->role == 'Administrator', function ($q) {
-            return $q->where('role', 'Staff');
-        })->when(Auth::user()->role == 'Staff', function ($q) {
-            return $q->where('role', 'Approver');
-        })->get();
-        return view('web.user.index', compact('users'));
+        if (in_array(Auth::user()->role, ['Administrator', 'Staff'])) :
+            $users = User::when(Auth::user()->role == 'Administrator', function ($q) {
+                return $q->where('role', 'Staff');
+            })->when(Auth::user()->role == 'Staff', function ($q) {
+                return $q->where('role', 'Approver');
+            })->get();
+            return view('web.user.index', compact('users'));
+        else :
+            return redirect()->back()->with("error", "You dont have permission to access this page");
+        endif;
     }
 
     public function userForm()

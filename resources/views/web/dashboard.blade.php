@@ -10,11 +10,13 @@
                             <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Submitted</a>
                         </li>
                     </ul>
+                    @if(in_array(Auth::user()->role, ['Public']))
                     <div>
                         <div class="btn-wrapper">
                             <a href="{{ route('form.survey') }}" class="btn btn-primary text-white me-0"><i class="icon-download"></i>Get Assessment Rating</a>
                         </div>
                     </div>
+                    @endif
                 </div>
                 <div class="tab-content tab-content-basic">
                     <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">

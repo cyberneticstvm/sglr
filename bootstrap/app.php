@@ -20,12 +20,12 @@ return Application::configure(basePath: dirname(__DIR__))
             Staff::class
         ]);
         $middleware->append(Approver::class);
-        $middleware->append(PublicUser::class);
+        $middleware->append(PublicUser::class);*/
 
         $middleware->appendToGroup('admin-group', [
             AdminUser::class,
             Staff::class,
-        ]);*/
+        ]);
 
         $middleware->alias([
             'admin' => AdminUser::class,

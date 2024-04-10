@@ -34,7 +34,7 @@ Route::prefix('/')->middleware(['web', 'auth'])->group(function () {
     });
 });
 
-Route::prefix('/')->middleware(['web', 'auth', 'admin', 'staff'])->group(function () {
+Route::prefix('/')->middleware(['web', 'auth'])->group(function () {
     Route::controller(WebController::class)->group(function () {
         Route::get('user/register', 'userRegister')->name('user.register');
         Route::get('user/create', 'userForm')->name('form.user.create');

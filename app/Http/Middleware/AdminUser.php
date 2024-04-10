@@ -19,6 +19,6 @@ class AdminUser
         if ($request->user()->role == 'Administrator') :
             return $next($request);
         endif;
-        return redirect()->back()->with("error", 'Error! You dont have permission to access this page.!');
+        return redirect()->back()->with("error", 'Admin! You dont have permission to access this page.!' . $request->user()->role);
     }
 }

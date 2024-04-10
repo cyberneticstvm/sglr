@@ -19,6 +19,6 @@ class Staff
         if ($request->user()->role == 'Staff') :
             return $next($request);
         endif;
-        return redirect()->back()->with("error", 'Error! You dont have permission to access this page.!');
+        return redirect()->back()->with("error", 'Staff! You dont have permission to access this page.!' . $request->user()->role);
     }
 }
