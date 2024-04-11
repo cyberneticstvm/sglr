@@ -9,7 +9,7 @@
         {{ html()->form('PUT', route('survey.update', $survey->id))->open() }}
         <div class="card">
             @forelse($questions as $key => $question)
-            <div class="col-sm-12 mt-5">
+            <div class="col-sm-12">
                 <div class="">
                     <div class="card-body table-responsive">
                         <h2><span class="text-success">{{ $question->management }}</span></h2>
