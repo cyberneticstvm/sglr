@@ -13,7 +13,7 @@
                 <div class="">
                     <div class="card-body table-responsive">
                         <h2><span class="text-success">{{ $question->management }}</span></h2>
-                        <h4 class="text-muted">{{ $question->infrastructure }}</h4>
+                        <h4 class="text-primary">{{ $question->infrastructure }}</h4>
                         <h4>Q{{ $q++}}.</h4>
                         <table class="table">
                             <tbody>
