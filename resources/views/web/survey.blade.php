@@ -26,7 +26,7 @@
                                         <h4 class="fw-bold">{{ $item->indicator }}</h4>
                                         <h5 class="text-wrap lh-base">{{ $item->question }} <span class="text-danger">({{ $item->mark }} Marks)</span></h5>
                                         @forelse($item->details as $key2 => $sub)
-                                        <p>{!! $sub->name !!}</p>
+                                        <p class="text-wrap">{!! $sub->name !!}</p>
                                         @empty
                                         @endforelse
                                     </td>
