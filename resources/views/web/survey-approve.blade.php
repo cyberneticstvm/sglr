@@ -2,7 +2,7 @@
 @section("content")
 <div class="content-wrapper">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 mb-3">
             <h2>Approve Assessment Rating</h2>
         </div>
         @php($q = 1)
