@@ -23,9 +23,9 @@
                                     <td>
                                         <input type="radio" name="rad_{{ $item->question_group }}" id="rad_{{ $item->id }}" class="rad" value="{{ $item->mark }}" {{ (in_array($item->id, $survey->scores->pluck('question_id')->toArray())) ? 'checked' : '' }}>
                                     </td>
-                                    <td width="75%">
+                                    <td width="75%" class="text-wrap">
                                         <h4 class="fw-bold">{{ $item->indicator }}</h4>
-                                        <h5>{{ $item->question }} ({{ $item->mark }} Marks)</h5>
+                                        <h5 class="text-wrap">{{ $item->question }} ({{ $item->mark }} Marks)</h5>
                                         @forelse($item->details as $key2 => $sub)
                                         <p>{!! $sub->name !!}</p>
                                         @empty
