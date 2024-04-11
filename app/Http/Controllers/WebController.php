@@ -245,7 +245,9 @@ class WebController extends Controller
 
     public function userForm()
     {
-        $districts = District::all();
+        $districts = District::when(Auth::user()->district_id, function ($q) {
+            return $q->where('id', Auth::user()->district_id);
+        })->get();
         $roles = [];
         if (Auth::user()->role == 'Administrator') :
             $roles = array('Staff' => 'Staff');
@@ -276,7 +278,9 @@ class WebController extends Controller
     public function userEditForm(string $id)
     {
         $user = User::findOrFail(decrypt($id));
-        $districts = District::all();
+        $districts = District::when(Auth::user()->district_id, function ($q) {
+            return $q->where('id', Auth::user()->district_id);
+        })->get();
         $roles = [];
         if (Auth::user()->role == 'Administrator') :
             $roles = array('Staff' => 'Staff');
