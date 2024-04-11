@@ -19,9 +19,9 @@
                                 @forelse($question->getQuestions($question->question_group) as $key1 => $item)
                                 <tr>
                                     <input type="hidden" name="qid[]" value="{{ $item->id }}" />
-                                    <td width="85%">
+                                    <td width="75%">
                                         <h4 class="fw-bold">{{ $item->indicator }}</h4>
-                                        <h5>{{ $item->question }}</h5>
+                                        <h5 class="text-wrap lh-base">{{ $item->question }} <span class="text-danger">({{ $item->mark }} Marks)</span></h5>
                                         @forelse($item->details as $key2 => $sub)
                                         <p>{!! $sub->name !!}</p>
                                         @empty
