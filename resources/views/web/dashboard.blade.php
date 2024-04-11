@@ -30,8 +30,8 @@
                                                 <tr>
                                                     <th>SL No</th>
                                                     <th>Submitted By</th>
-                                                    <th>Score Provided</th>
-                                                    <th>Score Approved</th>
+                                                    <th>Assessment Score</th>
+                                                    <th>Approved Score</th>
                                                     <th>Submitted At</th>
                                                     <th>Approved At</th>
                                                     <th>Status</th>
