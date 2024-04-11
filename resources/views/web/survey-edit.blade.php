@@ -14,6 +14,7 @@
                     <div class="card-body table-responsive">
                         <h2><span class="text-success">{{ $question->management }}</span></h2>
                         <h4>Q{{ $q++}}.</h4>
+                        <h5></h5>
                         <table class="table">
                             <tbody>
                                 @forelse($question->getQuestions($question->question_group) as $key1 => $item)
@@ -24,7 +25,7 @@
                                     </td>
                                     <td width="85%">
                                         <h4 class="fw-bold">{{ $item->indicator }}</h4>
-                                        <h5>{{ $item->question }}</h5>
+                                        <h5>{{ $item->question }} ({{ $item->mark }} Marks)</h5>
                                         @forelse($item->details as $key2 => $sub)
                                         <p>{!! $sub->name !!}</p>
                                         @empty
