@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-sm-12 mb-3">
             <h2>Get Assessment Rating</h2>
+            <p>Select the button on left side of each question before marking your answer</p>
         </div>
         @php($q = 1)
         {{ html()->form('POST', route('survey.save'))->open() }}
