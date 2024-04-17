@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('/assets/images/favicon.png') }}" />
+    <style>
+        textarea {
+            height: auto !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -50,6 +55,13 @@
                                 {{ html()->select('institution_type', $itypes->pluck('name', 'id'), old('institution_type'))->class('form-control form-control-lg select2')->placeholder('Select') }}
                                 @error('institution_type')
                                 <small class="text-danger">{{ $errors->first('institution_type') }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>About Institution *</label>
+                                {{ html()->textarea('about_institution', old('about_institution'))->class('form-control')->rows('5')->placeholder('About Institution') }}
+                                @error('about_institution')
+                                <small class="text-danger">{{ $errors->first('about_institution') }}</small>
                                 @enderror
                             </div>
                             <div class="form-group">

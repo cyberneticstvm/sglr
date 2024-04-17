@@ -58,6 +58,7 @@ class WebController extends Controller
         $request->validate([
             'institution_name' => 'required',
             'institution_type' => 'required',
+            'about_institution' => 'required',
             'mobile' => 'required|numeric|digits:10|unique:users,mobile',
             'email' => 'required|email|unique:users,email',
             'local_body' => 'required',

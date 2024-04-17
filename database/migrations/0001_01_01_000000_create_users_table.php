@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('institution_name')->nullable();
             $table->unsignedBigInteger('institution_type')->nullable();
+            $table->text('about_institution')->nullable();
             $table->unsignedBigInteger('local_body')->nullable();
             $table->unsignedBigInteger('district_id')->nullable();
             $table->string('username')->unique();

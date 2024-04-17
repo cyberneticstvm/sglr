@@ -3,7 +3,7 @@
 <div class="content-wrapper">
     <div class="row">
         <div class="col-sm-12 mb-3">
-            <h2>Get Assessment Rating</h2>
+            <h2>Get Assessment Rating for {{ Auth::user()->institution_name }}</h2>
             <p>Select the button on left side of each question before marking your answer</p>
         </div>
         @php($q = 1)
