@@ -33,7 +33,7 @@
                                         @endforelse
                                     </td>
                                     <td>
-                                        {{ html()->select('answer[]', array('Yes' => 'Yes', 'No' => 'No'), 'No')->class('')->disabled() }}
+                                        {{ html()->select('answer[]', array('Yes' => 'Yes', 'No' => 'No'), 'No')->class('slct')->disabled() }}
                                     </td>
                                 </tr>
                                 @empty

@@ -33,7 +33,7 @@
                                         @endforelse
                                     </td>
                                     <td>
-                                        <select name="answer[]" {{ (!in_array($item->id, $survey->scores->pluck('question_id')->toArray())) ? 'disabled' : '' }}>
+                                        <select name="answer[]" class="slct" {{ (!in_array($item->id, $survey->scores->pluck('question_id')->toArray())) ? 'disabled' : '' }}>
                                             <option value="No">No</option>
                                             <option value="Yes" {{ ($survey->scores?->where('question_id', $item->id)?->first()?->survey_answer == 'Yes') ? 'selected' : '' }}>Yes</option>
                                         </select>

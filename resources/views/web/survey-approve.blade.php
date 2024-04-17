@@ -20,6 +20,9 @@
                                 @forelse($question->getQuestions($question->question_group) as $key1 => $item)
                                 <tr>
                                     <input type="hidden" name="qid[]" value="{{ $item->id }}" />
+                                    <td>
+                                        {{ html()->radio('rad_'.$item->question_group)->class('rad')->attribute('id', 'rad_'.$item->id)->attribute('value', $item->mark) }}
+                                    </td>
                                     <td width="75%">
                                         <h4 class="fw-bold">{{ $item->indicator }}</h4>
                                         <h5 class="text-wrap lh-base">{{ $item->question }} <span class="text-danger">({{ $item->mark }} Marks)</span></h5>
@@ -36,7 +39,7 @@
                                         <input type="hidden" name="survey_answer[]" value="{{ $survey->scores?->where('question_id', $item->id)?->first()?->survey_answer }}" />
                                     </td>
                                     <td>
-                                        <select name="approved_answer[]">
+                                        <select name="approved_answer[]" class="slct" {{ (!in_array($item->id, $survey->scores->pluck('question_id')->toArray())) ? 'disabled' : '' }}>
                                             <option value="No">No</option>
                                             <option value="Yes">Yes</option>
                                         </select>
