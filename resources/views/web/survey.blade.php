@@ -9,6 +9,22 @@
         @php($q = 1)
         {{ html()->form('POST', route('survey.save'))->open() }}
         <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h2>Istitution Name</h2>
+                        <h5 class="fw-bold">{{ Auth::user()->institution_name }}</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Istitution Type</h2>
+                        <h5 class="fw-bold">{{ Auth::user()->itype->name }}</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>About Facility</h2>
+                        <p class="fw-bold">{{ Auth::user()->itype->about_institution }}</p>
+                    </div>
+                </div>
+            </div>
             @forelse($questions as $key => $question)
             <div class="col-sm-12">
                 <div class="">
@@ -33,7 +49,7 @@
                                         @endforelse
                                     </td>
                                     <td>
-                                        {{ html()->select('answer[]', array('Yes' => 'Yes', 'No' => 'No'), 'No')->class('slct')->disabled() }}
+                                        {{ html()->select('answer[]', array('Yes' => 'Yes', 'No' => 'No'), 'No')->class('slct')->attribute('id', 'slct_'.$item->id)->attribute('data-qid', $item->id)->disabled() }}
                                     </td>
                                 </tr>
                                 @empty

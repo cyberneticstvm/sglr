@@ -9,6 +9,22 @@
         @php($q = 1)
         {{ html()->form('PUT', route('survey.update', $survey->id))->open() }}
         <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h2>Istitution Name</h2>
+                        <h5 class="fw-bold">{{ Auth::user()->institution_name }}</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Istitution Type</h2>
+                        <h5 class="fw-bold">{{ Auth::user()->itype->name }}</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>About Facility</h2>
+                        <p class="fw-bold">{{ Auth::user()->itype->about_institution }}</p>
+                    </div>
+                </div>
+            </div>
             @forelse($questions as $key => $question)
             <div class="col-sm-12">
                 <div class="">
@@ -33,7 +49,7 @@
                                         @endforelse
                                     </td>
                                     <td>
-                                        <select name="answer[]" class="slct" {{ (!in_array($item->id, $survey->scores->pluck('question_id')->toArray())) ? 'disabled' : '' }}>
+                                        <select name="answer[]" class="slct" data-qid="{{ $item->id }}" id="slct_{{ $item->id }}" {{ (!in_array($item->id, $survey->scores->pluck('question_id')->toArray())) ? 'disabled' : '' }}>
                                             <option value="No">No</option>
                                             <option value="Yes" {{ ($survey->scores?->where('question_id', $item->id)?->first()?->survey_answer == 'Yes') ? 'selected' : '' }}>Yes</option>
                                         </select>

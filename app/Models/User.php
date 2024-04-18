@@ -23,6 +23,11 @@ class User extends Authenticatable
         return $this->belongsTo(District::class, 'district_id', 'id');
     }
 
+    public function itype()
+    {
+        return $this->belongsTo(InstitutionType::class, 'institution_type', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
