@@ -12,11 +12,11 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3">
-                        <h2>Istitution Name</h2>
+                        <h2>Institution Name</h2>
                         <h5 class="fw-bold">{{ Auth::user()->institution_name }}</h5>
                     </div>
                     <div class="col-md-3">
-                        <h2>Istitution Type</h2>
+                        <h2>Institution Type</h2>
                         <h5 class="fw-bold">{{ Auth::user()->itype->name }}</h5>
                     </div>
                     <div class="col-md-6">
