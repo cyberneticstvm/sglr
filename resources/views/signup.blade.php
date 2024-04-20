@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Local Body *</label>
-                                {{ html()->select('local_body', $lbs->pluck('name', 'id'), old('local_body'))->class('form-control form-control-lg select2')->placeholder('Select') }}
+                                {{ html()->select('local_body', '', old('local_body'))->class('form-control form-control-lg select2 lbody')->placeholder('Select') }}
                                 @error('email')
                                 <small class="text-danger">{{ $errors->first('email') }}</small>
                                 @enderror
@@ -139,6 +139,26 @@
         $(function() {
             "use strict"
             $(".select2").select2();
+
+            $(".district").change(function() {
+                let did = $(this).val();
+                $.ajax({
+                    type: 'GET',
+                    url: '/ajax/lbody/' + did,
+                    dataType: 'json',
+                    success: function(res) {
+                        var xdata = $.map(res, function(obj) {
+                            obj.text = obj.name || obj.id;
+                            return obj;
+                        });
+                        $('.lbody').select2().empty();
+                        $('.lbody').select2({
+                            placeholder: 'Select',
+                            data: xdata,
+                        });
+                    }
+                });
+            });
         })
     </script>
     <!-- endinject -->

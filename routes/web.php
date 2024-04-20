@@ -20,11 +20,14 @@ Route::middleware(['web'])->group(function () {
         Route::post('/forgot/password', 'emailPasswordResetLink')->name('email.password.reset.link');
         Route::get('/reset/password/{token}', 'resetPassword')->name('reset.password');
         Route::get('/reset/password/update/{token}', 'resetPasswordUpdate')->name('reset.password.update');
+
+        Route::get('ajax/lbody/{district}', 'getLocalBody')->name('district.lbody');
     });
 });
 
 Route::prefix('/')->middleware(['web', 'auth'])->group(function () {
     Route::controller(WebController::class)->group(function () {
+
         Route::get('logout', 'logout')->name('logout');
         Route::get('dashboard', 'dashboard')->name('dashboard');
 

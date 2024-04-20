@@ -386,4 +386,10 @@ class WebController extends Controller
         }
         return redirect()->route('login')->with("success", "Password reset done successfully");
     }
+
+    public function getLocalBody($district)
+    {
+        $lbody = LocalBody::where('district_id', $district)->get();
+        return response()->json($lbody);
+    }
 }
