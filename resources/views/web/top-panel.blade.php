@@ -31,6 +31,7 @@
                         <p class="mb-1 mt-3 font-weight-semibold">{{ Auth::user()->name }}</p>
                         <p class="fw-light text-muted mb-0">{{ Auth::user()->role }}</p>
                     </div>
+                    <a class="dropdown-item" href="{{ route('password') }}"><i class="dropdown-item-icon mdi mdi-lock-reset text-primary me-2"></i>Change Password</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
                 </div>
             </li>

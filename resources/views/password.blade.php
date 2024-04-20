@@ -34,30 +34,23 @@
                                 <img src="{{ asset('/assets/images/logo.svg') }}" alt="logo">
                             </div>
                             <h4>Swachhata Green Leaf Rating</h4>
-                            <h6 class="fw-light">Sign in.</h6>
-                            {{ html()->form('POST', route('user.login'))->class('pt-3')->open() }}
+                            <h6 class="fw-light">Request Password Reset Link.</h6>
+                            {{ html()->form('POST', route('email.password.reset.link'))->class('pt-3')->open() }}
                             @csrf
                             <div class="form-group">
-                                <label>User Name *</label>
-                                {{ html()->text('username', old('username'))->class('form-control form-control-lg')->placeholder('Username') }}
-                                @error('username')
-                                <small class="text-danger">{{ $errors->first('username') }}</small>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Password *</label>
-                                {{ html()->password('password', old('password'))->class('form-control form-control-lg')->placeholder('******') }}
-                                @error('password')
-                                <small class="text-danger">{{ $errors->first('password') }}</small>
+                                <label>Registered Email *</label>
+                                {{ html()->email('email', old('email'))->class('form-control form-control-lg')->placeholder('Email') }}
+                                @error('email')
+                                <small class="text-danger">{{ $errors->first('email') }}</small>
                                 @enderror
                             </div>
                             <div class="mt-3">
-                                {{ html()->submit('Login')->class('btn btn-block btn-submit btn-primary btn-lg font-weight-medium auth-form-btn') }}
+                                {{ html()->submit('Request Password Reset Link')->class('btn btn-block btn-submit btn-primary btn-lg font-weight-medium auth-form-btn') }}
                             </div>
                             {{ html()->form()->close() }}
                         </div>
                         <div class="text-center mt-4 fw-light">
-                            Don't have an account? <a href="{{ route('signup') }}" class="text-primary">Create</a> | Forgot Password? <a href="{{ route('forgot.password') }}" class="text-primary">Reset</a>
+                            Already have an account? <a href="{{ route('login') }}" class="text-primary">Login</a>
                         </div>
                     </div>
                 </div>

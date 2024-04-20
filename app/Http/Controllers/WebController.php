@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PasswordResetEmail;
 use App\Models\District;
 use App\Models\InstitutionType;
 use App\Models\LocalBody;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -315,5 +317,73 @@ class WebController extends Controller
     {
         User::findOrFail(decrypt($id))->delete();
         return redirect()->route('user.register')->with("success", "User deleted successfully");
+    }
+
+    public function password()
+    {
+        return view('web.password');
+    }
+
+    public function passwordUpdate(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+        User::findOrFail(Auth::id())->update([
+            'password' => Hash::make($request->password)
+        ]);
+        return redirect()->back()->with("success", "Password updated successfully");
+    }
+
+    public function forgotPassword()
+    {
+        return view('password');
+    }
+
+    public function emailPasswordResetLink(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+        try {
+            $user = User::where('email', $request->email)->firstOrFail();
+            $remember_token = Str::random(10);
+            $user->update([
+                'remember_token' => $remember_token,
+            ]);
+            $user = User::where('email', $request->email)->where('remember_token', $remember_token)->firstOrFail();
+            Mail::to($user->email)->cc('vijoysasidharan@yahoo.com')->send(new PasswordResetEmail($user));
+        } catch (Exception $e) {
+            return redirect()->back()->with("error", "Email Id does not exists!")->withInput($request->all());
+        }
+        return redirect()->back()->with("success", "Password reset link sent successfully to the registered email id");
+    }
+
+    public function resetPassword(string $token)
+    {
+        try {
+            $user = User::where('remember_token', $token)->firstOrFail();
+        } catch (Exception $e) {
+            return redirect()->route('signup')->with("error", "Invalid or expired url!");
+        }
+        return view('reset-password', compact('token'));
+    }
+
+    public function resetPasswordUpdate(Request $request, string $token)
+    {
+        $request->validate([
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+        try {
+            $user = User::where('remember_token', $token)->firstOrFail();
+            $user->update([
+                'password' => Hash::make($request->password)
+            ]);
+        } catch (Exception $e) {
+            return redirect()->route('signup')->with("error", $e->getMessage());
+        }
+        return redirect()->route('login')->with("success", "Password reset done successfully");
     }
 }

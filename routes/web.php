@@ -15,6 +15,11 @@ Route::middleware(['web'])->group(function () {
 
         Route::get('/signup', 'signupForm')->name('signup');
         Route::post('/signup', 'signup')->name('user.signup');
+
+        Route::get('/forgot/password', 'forgotPassword')->name('forgot.password');
+        Route::post('/forgot/password', 'emailPasswordResetLink')->name('email.password.reset.link');
+        Route::get('/reset/password/{token}', 'resetPassword')->name('reset.password');
+        Route::get('/reset/password/{token}', 'resetPasswordUpdate')->name('reset.password.update');
     });
 });
 
@@ -31,6 +36,9 @@ Route::prefix('/')->middleware(['web', 'auth'])->group(function () {
 
         Route::get('survey/approve/{id}', 'surveyApprove')->name('form.survey.approve')->middleware([Approver::class]);
         Route::put('survey/approve/{id}', 'surveyApproveSave')->name('survey.approve')->middleware([Approver::class]);
+
+        Route::get('password', 'password')->name('password');
+        Route::put('password', 'passwordUpdate')->name('password.update');
     });
 });
 
