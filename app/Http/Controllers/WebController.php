@@ -355,7 +355,7 @@ class WebController extends Controller
             $user = User::where('email', $request->email)->where('remember_token', $remember_token)->firstOrFail();
             Mail::to($user->email)->cc('vijoysasidharan@yahoo.com')->send(new PasswordResetEmail($user));
         } catch (Exception $e) {
-            return redirect()->back()->with("error", "Email Id does not exists!")->withInput($request->all());
+            return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
         }
         return redirect()->back()->with("success", "Password reset link sent successfully to the registered email id");
     }
