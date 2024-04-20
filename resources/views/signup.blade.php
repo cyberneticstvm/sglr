@@ -79,17 +79,17 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label>District *</label>
+                                {{ html()->select('district_id', $districts->pluck('name', 'id'), old('district_id'))->class('form-control form-control-lg select2 district')->placeholder('Select') }}
+                                @error('district_id')
+                                <small class="text-danger">{{ $errors->first('district_id') }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label>Local Body *</label>
                                 {{ html()->select('local_body', $lbs->pluck('name', 'id'), old('local_body'))->class('form-control form-control-lg select2')->placeholder('Select') }}
                                 @error('email')
                                 <small class="text-danger">{{ $errors->first('email') }}</small>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>District *</label>
-                                {{ html()->select('district_id', $districts->pluck('name', 'id'), old('district_id'))->class('form-control form-control-lg select2')->placeholder('Select') }}
-                                @error('district_id')
-                                <small class="text-danger">{{ $errors->first('district_id') }}</small>
                                 @enderror
                             </div>
                             <div class="form-group">
