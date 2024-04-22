@@ -28,9 +28,4 @@ class Survey extends Model
     {
         return $this->belongsTo(District::class, 'district_id', 'id');
     }
-
-    public function localbody()
-    {
-        return $this->belongsTo(LocalBody::class, 'local_body', 'id');
-    }
 }

@@ -3,7 +3,7 @@
 <div class="content-wrapper">
     <div class="row">
         <div class="col-sm-12 mb-3">
-            <h2>Approve Assessment Rating</h2>
+            <h2>View Assessment Rating</h2>
         </div>
         @php($q = 1)
         {{ html()->form('PUT', route('survey.approve', $survey->id))->open() }}

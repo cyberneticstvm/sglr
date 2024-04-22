@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-md-3">
                         <h2>District / Localbody</h2>
-                        <p class="fw-bold">{{ Auth::user()->district?->name }} / {{ $survey->user?->localbody?->name }}</p>
+                        <p class="fw-bold">{{ Auth::user()->district?->name }} / {{ Auth::user()?->localbody?->name }}</p>
                     </div>
                 </div>
             </div>
