@@ -23,4 +23,14 @@ class Survey extends Model
     {
         return $this->hasMany(Score::class, 'survey_id', 'id');
     }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id', 'id');
+    }
+
+    public function localbody()
+    {
+        return $this->belongsTo(LocalBody::class, 'local_body', 'id');
+    }
 }

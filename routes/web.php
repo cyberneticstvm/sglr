@@ -42,6 +42,8 @@ Route::prefix('/')->middleware(['web', 'auth'])->group(function () {
 
         Route::get('password', 'password')->name('password');
         Route::put('password', 'passwordUpdate')->name('password.update');
+
+        Route::get('survey/view/{id}', 'surveyView')->name('form.survey.view');
     });
 });
 

@@ -9,19 +9,36 @@ $(function () {
         hid.removeAttr('disabled');
         dis.parent().parent().parent().find('.slct').not(sel).attr('disabled', true);
         dis.parent().parent().parent().find('.qid').not(hid).attr('disabled', true);
+        dis.parent().parent().parent().find('.slct').not(sel).val('No');
     });
 
     $(".slct").change(function () {
         let dis = $(this);
         let qid = dis.data('qid');
-        if ((qid == 7 || qid == 10 || qid == 11) && dis.val() == 'Yes') {
+        if ((qid == 10 || qid == 11) && dis.val() == 'Yes') {
             $('#slct_8').val('No')
             $('#slct_9').val('No')
+            $('#slct_7').val('No')
+            $('#slct_8, #slct_9, #slct_7').attr('disabled', true);
+        }
+        if (qid == 7 && dis.val() == 'Yes') {
+            $('#slct_8').val('No')
+            $('#slct_9').val('No')
+            $('#slct_10').val('No')
+            $('#slct_11').val('No')
+            $('#slct_8, #slct_9, #slct_10, #slct_11').attr('disabled', true);
         }
         if ((qid == 8 || qid == 9) && dis.val() == 'Yes') {
             $('#slct_7').val('No')
             $('#slct_10').val('No')
             $('#slct_11').val('No')
+            $('#slct_7, #slct_10, #slct_11').attr('disabled', true);
+        }
+        if (qid == 8 && dis.val() != 'Yes') {
+            $('#slct_9').val('No')
+        }
+        if (qid == 9 && $('#slct_8').val() != 'Yes') {
+            $('#slct_9').val('No')
         }
     });
 })

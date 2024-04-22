@@ -139,6 +139,13 @@ class WebController extends Controller
         return redirect()->route('dashboard')->with("success", "Survey submitted successfully.");
     }
 
+    public function surveyView(string $id)
+    {
+        $survey = Survey::where('id', decrypt($id))->where('status', 'Pending')->firstOrFail();
+        $questions = Question::where('status', 1)->get()->unique('question_group');
+        return view('web.survey-view', compact('questions', 'survey'));
+    }
+
     public function surveyEdit(string $id)
     {
         try {

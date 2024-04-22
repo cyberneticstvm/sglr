@@ -59,9 +59,9 @@
                                         <input type="hidden" name="survey_answer[]" value="{{ $survey->scores?->where('question_id', $item->id)?->first()?->survey_answer }}" />
                                     </td>
                                     <td>
-                                        <select name="approved_answer[]" class="slct" data-qid="{{ $item->id }}" id="slct_{{ $item->id }}" {{ (!in_array($item->id, $survey->scores->pluck('question_id')->toArray())) ? 'disabled' : '' }}>
+                                        <select name="approved_answer[]" disabled>
                                             <option value="No">No</option>
-                                            <option value="Yes">Yes</option>
+                                            <option value="Yes" {{ ($survey->scores?->where('question_id', $item->id)?->first()?->approved_answer == 'Yes') ? 'selected' : '' }}>Yes</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -78,9 +78,6 @@
             @endif
             @empty
             @endforelse
-        </div>
-        <div class="col-sm-12 mt-3 text-end">
-            {{ html()->submit('Approve')->class('btn btn-block btn-submit btn-primary font-weight-medium auth-form-btn') }}
         </div>
         {{ html()->form()->close() }}
     </div>

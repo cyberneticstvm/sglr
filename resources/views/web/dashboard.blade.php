@@ -50,6 +50,7 @@
                                                     <th>Submitted At</th>
                                                     <th>Approved At</th>
                                                     <th>Status</th>
+                                                    <th>View</th>
                                                     <th>Edit</th>
                                                 </tr>
                                             </thead>
@@ -63,6 +64,7 @@
                                                     <td>{{ $survey->created_at->format('d, M Y h:i a') }}</td>
                                                     <td>{{ $survey->approved_at }}</td>
                                                     <td><a href="{{ route('form.survey.approve', encrypt($survey->id)) }}">{{ $survey->status }}</a></td>
+                                                    <td><a href="{{ route('form.survey.view', encrypt($survey->id)) }}">View</a></td>
                                                     <td class="text-center"><a href="{{ route('form.survey.edit', encrypt($survey->id)) }}">Edit</a></td>
                                                 </tr>
                                                 @empty
