@@ -19,9 +19,13 @@
                         <h2>Institution Type</h2>
                         <h5 class="fw-bold">{{ Auth::user()->itype?->name }}</h5>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <h2>About Facility</h2>
                         <p class="fw-bold">{{ Auth::user()->about_institution }}</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>District / Localbody</h2>
+                        <p class="fw-bold">{{ Auth::user()->district?->name }} / {{ $survey->user?->localbody?->name }}</p>
                     </div>
                 </div>
             </div>
