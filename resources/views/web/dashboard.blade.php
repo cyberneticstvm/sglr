@@ -29,6 +29,27 @@
                                     <div class="card-body table-responsive">
                                         <h4>Assessment Instructions</h4>
                                         <a href="{{ asset('/assets/docs/brochure1.pdf') }}" target="_blank">Brochure</a>
+                                        <div class="text-center mt-5">
+                                            <img src="{{ asset('/assets/docs/1.jpeg') }}" class="img-fluid w-50" />
+                                        </div>
+                                        <div class="text-center mt-5">
+                                            <img src="{{ asset('/assets/docs/2.jpeg') }}" class="img-fluid w-50" />
+                                        </div>
+                                        <div class="text-center mt-5">
+                                            <img src="{{ asset('/assets/docs/3.jpeg') }}" class="img-fluid w-50" />
+                                        </div>
+                                        <div class="text-center mt-5">
+                                            <img src="{{ asset('/assets/docs/4.jpeg') }}" class="img-fluid w-50" />
+                                        </div>
+                                        <div class="text-center mt-5">
+                                            <img src="{{ asset('/assets/docs/5.jpeg') }}" class="img-fluid w-50" />
+                                        </div>
+                                        <div class="text-center mt-5">
+                                            <img src="{{ asset('/assets/docs/6.jpeg') }}" class="img-fluid w-50" />
+                                        </div>
+                                        <div class="text-center mt-5">
+                                            <img src="{{ asset('/assets/docs/7.jpeg') }}" class="img-fluid w-50" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
