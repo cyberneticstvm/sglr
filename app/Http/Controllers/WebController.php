@@ -141,7 +141,7 @@ class WebController extends Controller
 
     public function surveyView(string $id)
     {
-        $survey = Survey::where('id', decrypt($id))->where('status', 'Pending')->firstOrFail();
+        $survey = Survey::where('id', decrypt($id))->firstOrFail();
         $questions = Question::where('status', 1)->get()->unique('question_group');
         return view('web.survey-view', compact('questions', 'survey'));
     }
