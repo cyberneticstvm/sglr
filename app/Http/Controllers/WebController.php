@@ -245,7 +245,7 @@ class WebController extends Controller
             $users = User::when(Auth::user()->role == 'Administrator', function ($q) {
                 return $q->where('role', 'Staff');
             })->when(Auth::user()->role == 'Staff', function ($q) {
-                return $q->where('role', 'Approver');
+                return $q->where('role', 'Approver')->where('district_id', Auth::user()->district_id);
             })->get();
             return view('web.user.index', compact('users'));
         else :
