@@ -386,7 +386,8 @@ class WebController extends Controller
         try {
             $user = User::where('remember_token', $token)->firstOrFail();
             $user->update([
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
+                'remember_token' => NULL,
             ]);
         } catch (Exception $e) {
             return redirect()->route('signup')->with("error", $e->getMessage());
