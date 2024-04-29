@@ -19,7 +19,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/forgot/password', 'forgotPassword')->name('forgot.password');
         Route::post('/forgot/password', 'emailPasswordResetLink')->name('email.password.reset.link');
         Route::get('/reset/password/{token}', 'resetPassword')->name('reset.password');
-        Route::get('/reset/password/update/{token}', 'resetPasswordUpdate')->name('reset.password.update');
+        Route::post('/reset/password/update/{token}', 'resetPasswordUpdate')->name('reset.password.update');
 
         Route::get('ajax/lbody/{district}', 'getLocalBody')->name('district.lbody');
     });
