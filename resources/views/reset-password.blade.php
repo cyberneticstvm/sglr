@@ -35,7 +35,7 @@
                             </div>
                             <h4>Swachhata Green Leaf Rating</h4>
                             <h6 class="fw-light">Update Password.</h6>
-                            {{ html()->form('POST', route('reset.password.update'))->class('pt-3')->open() }}
+                            {{ html()->form('POST', route('reset.password.update', $token))->class('pt-3')->open() }}
                             @csrf
                             <div class="form-group">
                                 <label>Password *</label>
