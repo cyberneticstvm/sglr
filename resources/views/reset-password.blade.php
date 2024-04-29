@@ -34,8 +34,8 @@
                                 <img src="{{ asset('/assets/images/sglrlogo.png') }}" alt="logo">
                             </div>
                             <h4>Swachhata Green Leaf Rating</h4>
-                            <h6 class="fw-light">Request Password Reset Link.</h6>
-                            {{ html()->form('POST', route('email.password.reset.link'))->class('pt-3')->open() }}
+                            <h6 class="fw-light">Update Password.</h6>
+                            {{ html()->form('POST', route('reset.password.update'))->class('pt-3')->open() }}
                             @csrf
                             <div class="form-group">
                                 <label>Password *</label>
