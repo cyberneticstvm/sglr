@@ -31,7 +31,15 @@
                                 <div class="card">
                                     <div class="card-body table-responsive">
                                         <h4 class="card-title">Dashboard</h4>
-
+                                        <div class="row">
+                                            @forelse($districts as $key => $district)
+                                            <div class="col-md-3">
+                                                {{ $district->name }}
+                                                <h5 class="fw-bold">0</h5>
+                                            </div>
+                                            @empty
+                                            @endforelse
+                                        </div>
                                     </div>
                                 </div>
                             </div>
