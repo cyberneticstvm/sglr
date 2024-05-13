@@ -10,6 +10,9 @@
                             <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link ps-0" id="home-tab" data-bs-toggle="tab" href="#instruction" role="tab" aria-controls="instruction" aria-selected="true">Instructions</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Submitted</a>
                         </li>
                     </ul>
@@ -22,7 +25,19 @@
                     @endif
                 </div>
                 <div class="tab-content tab-content-basic">
-                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="overview">
+                    <div class="tab-pane fade active" id="dashboard" role="tabpanel" aria-labelledby="dashboard">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body table-responsive">
+                                        <h4 class="card-title">Dashboard</h4>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="instruction" role="tabpanel" aria-labelledby="overview">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
