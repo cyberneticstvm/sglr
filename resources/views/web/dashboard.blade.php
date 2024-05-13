@@ -65,6 +65,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>SL No</th>
+                                                    <th>District</th>
+                                                    <th>Localbody</th>
                                                     <th>Submitted By</th>
                                                     <th>Assessment Mark</th>
                                                     <th>Approved Mark</th>
@@ -79,6 +81,8 @@
                                                 @forelse($surveys as $key => $survey)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $survey->user->district->name }}</td>
+                                                    <td>{{ $survey->user->localbody->name }}</td>
                                                     <td>{{ $survey->user->name }}</td>
                                                     <td>{{ $survey->total_score_survey }}</td>
                                                     <td>{{ $survey->total_score_approved }}</td>

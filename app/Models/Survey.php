@@ -23,9 +23,4 @@ class Survey extends Model
     {
         return $this->hasMany(Score::class, 'survey_id', 'id');
     }
-
-    public function district()
-    {
-        return $this->belongsTo(District::class, 'district_id', 'id');
-    }
 }
