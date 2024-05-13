@@ -94,7 +94,7 @@ class WebController extends Controller
             return $q->whereIn('created_by', User::where('role', 'Public')->where('district_id', Auth::user()->district_id)->pluck('id'));
         })->get();
         $districts = District::all();
-        return view('web.dashboard', compact('surveys', compact('districts')));
+        return view('web.dashboard', compact('surveys', 'districts'));
     }
 
     public function survey()
