@@ -25,7 +25,7 @@
                     @endif
                 </div>
                 <div class="tab-content tab-content-basic">
-                    <div class="tab-pane fade active" id="dashboard" role="tabpanel" aria-labelledby="dashboard">
+                    <div class="tab-pane active" id="dashboard" role="tabpanel" aria-labelledby="dashboard">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
