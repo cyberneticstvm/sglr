@@ -15,5 +15,5 @@ function statuses()
 
 function submittedAssessmentCount($district)
 {
-    return Survey::where('created_by', User::where('district_id', $district)->pluck('id'))->count('id');
+    return Survey::where('created_by', 3)->count('id');
 }
