@@ -44,6 +44,15 @@
                                             @empty
                                             @endforelse
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-3 mt-3">
+                                                <h5 class="fw-bold mt-1 text-success">State Wise Consolidate</h5>
+                                                @forelse($types as $key1 => $type)
+                                                <p>{{ $type->name }} ({{ submittedAssessmentCountByCategory(0 , $type->id) }})</p>
+                                                @empty
+                                                @endforelse
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
