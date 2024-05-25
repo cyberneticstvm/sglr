@@ -96,7 +96,8 @@ class WebController extends Controller
         $districts = District::when(!in_array(Auth::user()->role, ['Administrator', 'Staff', 'Approver']), function ($q) {
             return $q->where('id', Auth::user()->district_id);
         })->get();
-        return view('web.dashboard', compact('surveys', 'districts'));
+        $type = InstitutionType::all();
+        return view('web.dashboard', compact('surveys', 'districts', 'types'));
     }
 
     public function survey()

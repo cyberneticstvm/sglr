@@ -22,3 +22,12 @@ function submittedAssessmentCount($district)
         return $q->where('created_by', Auth::user()->id);
     })->count('id');
 }
+
+function submittedAssessmentCountByCategory($district, $type)
+{
+    return Survey::where('institution_type', $type)->when(in_array(Auth::user()->role, ['Administrator', 'Staff', 'Approver']), function ($q) use ($district) {
+        return $q->whereIn('created_by', User::where('district_id', $district)->pluck('id'));
+    })->when(in_array(Auth::user()->role, ['Public']), function ($q) {
+        return $q->where('created_by', Auth::user()->id);
+    })->count('id');
+}
