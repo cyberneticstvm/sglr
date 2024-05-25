@@ -33,9 +33,9 @@
                                         <h4 class="card-title">Dashboard</h4>
                                         <div class="row">
                                             @forelse($districts as $key => $district)
-                                            <div class="col-md-3 mt-3 text-center">
+                                            <div class="col-md-3 mt-3">
                                                 {{ $district->name }}
-                                                <h5 class="fw-bold mt-1 text-success text-center">{{ submittedAssessmentCount($district->id) }}</h5>
+                                                <h5 class="fw-bold mt-1 text-success">{{ submittedAssessmentCount($district->id) }}</h5>
                                                 @forelse($types as $key1 => $type)
                                                 <p>{{ $type->name }} ({{ submittedAssessmentCountByCategory($district->id, $type->id) }})</p>
                                                 @empty
