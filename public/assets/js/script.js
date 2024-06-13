@@ -12,7 +12,7 @@ $(function () {
         dis.parent().parent().parent().find('.slct').not(sel).val('No');
     });
 
-    $(".slct").change(function () {
+    $(".slct").change(function () {        
         let dis = $(this);
         let qid = dis.data('qid');
         if ((qid == 10 || qid == 11) && dis.val() == 'Yes') {
