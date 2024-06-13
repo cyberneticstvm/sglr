@@ -230,7 +230,7 @@ class WebController extends Controller
                 $score1 = Score::where('survey_id', $survey->id)->where('approved_answer', 'Yes')->sum('approved_score');
                 $survey->update([
                     'total_score_survey' => $score,
-                    'total_score_approved' => $score1,
+                    'total_score_approved' => ($score1 > 200) ? 200 : $score1,
                     'status' => 'Approved',
                     'approved_by' => $request->user()->id,
                     'approved_at' => Carbon::now(),
