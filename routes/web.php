@@ -37,8 +37,8 @@ Route::prefix('/')->middleware(['web', 'auth'])->group(function () {
         Route::get('survey/edit/{id}', 'surveyEdit')->name('form.survey.edit')->middleware([PublicUser::class]);
         Route::put('survey/edit/{id}', 'surveyUpdate')->name('survey.update')->middleware([PublicUser::class]);
 
-        Route::get('survey/approve/{id}', 'surveyApprove')->name('form.survey.approve'); //->middleware([Approver::class]);
-        Route::put('survey/approve/{id}', 'surveyApproveSave')->name('survey.approve'); //->middleware([Approver::class]);
+        Route::get('survey/approve/{id}', 'surveyApprove')->name('form.survey.approve')->middleware([Approver::class]);
+        Route::put('survey/approve/{id}', 'surveyApproveSave')->name('survey.approve')->middleware([Approver::class]);
 
         Route::get('password', 'password')->name('password');
         Route::put('password', 'passwordUpdate')->name('password.update');

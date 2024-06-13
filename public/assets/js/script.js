@@ -40,6 +40,9 @@ $(function () {
         if (qid == 9 && $('#slct_8').val() != 'Yes') {
             $('#slct_9').val('No')
         }
+        $(".slct").each(function(){
+            $(this).parent().find(".appr_ans").val($(this).val());
+        })
     });
 
     $("#btnPrint").click(function () {

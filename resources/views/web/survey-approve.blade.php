@@ -63,6 +63,7 @@
                                             <option value="No">No</option>
                                             <option value="Yes">Yes</option>
                                         </select>
+                                        <input type="hidden" name="appr_ans[]" id="txt_{{ $item->id }}" class="appr_ans" value="" />
                                     </td>
                                 </tr>
                                 @empty
