@@ -1,6 +1,6 @@
 @extends("web.base")
 @section("content")
-<div class="content-wrapper">
+<div class="content-wrapper" id="printView">
     <div class="row">
         <div class="col-sm-12 mb-3">
             <h2>View Assessment Rating</h2>
@@ -81,5 +81,6 @@
         </div>
         {{ html()->form()->close() }}
     </div>
+    <input type="button" value="Print Div Contents" id="btnPrint" />
 </div>
 @endsection
