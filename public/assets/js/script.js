@@ -42,7 +42,7 @@ $(function () {
         }
     });
 
-    $(document).on("click", "#btnPrint", function () { alert('print')
+    $("#btnPrint").click(function () {
         let divContents = $("#printView").html();
         let printWindow = window.open('', '', 'height=800,width=800');
         printWindow.document.write('<html><head><title>DIV Contents</title>');
