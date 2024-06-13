@@ -101,6 +101,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>SL No</th>
+                                                    <th>SID</th>
                                                     <th>Mobile</th>
                                                     <th>District</th>
                                                     <th>Localbody</th>
@@ -118,6 +119,7 @@
                                                 @forelse($surveys as $key => $survey)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $survey->id }}</td>
                                                     <td>{{ $survey->user->mobile }}</td>
                                                     <td>{{ $survey->user->district->name }}</td>
                                                     <td>{{ $survey->user->localbody->name }}</td>
