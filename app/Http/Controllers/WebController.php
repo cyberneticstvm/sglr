@@ -217,7 +217,7 @@ class WebController extends Controller
                         'survey_id' => $survey->id,
                         'question_id' => $q->id,
                         'survey_answer' => $request->survey_answer[$key],
-                        'approved_answer' => $request->approved_answer[$key],
+                        'approved_answer' => $request->approved_answer[$key] ?? 'No',
                         'survey_score' => $q->mark,
                         'approved_score' => $q->mark,
                         'created_at' => $survey->created_at,
