@@ -80,7 +80,7 @@
             @endforelse
         </div>
         {{ html()->form()->close() }}
-        <button class="btn btn-info mt-3 float-end" id="btnPrint">Print</button>
+        <button class="btn btn-info mt-3" id="btnPrint">Print Document</button>
     </div>
 </div>
 @endsection
