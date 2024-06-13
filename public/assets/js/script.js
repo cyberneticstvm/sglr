@@ -45,7 +45,7 @@ $(function () {
     $("#btnPrint").click(function () {
         let divContents = $("#printView").html();
         let printWindow = window.open('', '', 'height=800,width=800');
-        printWindow.document.write('<html><head><title>DIV Contents</title>');
+        printWindow.document.write('<html><head><title>Document</title>');
         printWindow.document.write('</head><body >');
         printWindow.document.write(divContents);
         printWindow.document.write('</body></html>');
