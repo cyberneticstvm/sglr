@@ -224,8 +224,6 @@ class WebController extends Controller
                         'updated_at' => Carbon::now(),
                     ];
                 endforeach;
-                dd($data);
-                die;
                 Score::where('survey_id', $survey->id)->delete();
                 Score::insert($data);
                 $score = Score::where('survey_id', $survey->id)->where('survey_answer', 'Yes')->sum('survey_score');
