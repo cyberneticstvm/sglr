@@ -42,9 +42,9 @@ $(function () {
         }
     });
 
-    $("#btnPrint").live("click", function () {
-        var divContents = $("#printView").html();
-        var printWindow = window.open('', '', 'height=400,width=800');
+    $("#btnPrint").on("click", function () { alert('print')
+        let divContents = $("#printView").html();
+        let printWindow = window.open('', '', 'height=400,width=800');
         printWindow.document.write('<html><head><title>DIV Contents</title>');
         printWindow.document.write('</head><body >');
         printWindow.document.write(divContents);
