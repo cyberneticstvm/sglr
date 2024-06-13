@@ -101,7 +101,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>SL No</th>
-                                                    <th>SID</th>
+                                                    <th>A.Id</th>
                                                     <th>Mobile</th>
                                                     <th>District</th>
                                                     <th>Localbody</th>
