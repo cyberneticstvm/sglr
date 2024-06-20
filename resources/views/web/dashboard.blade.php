@@ -35,9 +35,9 @@
                                             @forelse($districts as $key => $district)
                                             <div class="col-md-3 mt-3">
                                                 {{ $district->name }}
-                                                <h5 class="fw-bold mt-1 text-success">{{ submittedAssessmentCount($district->id) }}</h5>
+                                                <h5 class="fw-bold mt-1 text-success">{{ submittedAssessmentCount($district->id, $status="") }} - {{ submittedAssessmentCount($district->id, $status="Approved") }}</h5>
                                                 @forelse($types as $key1 => $type)
-                                                <p>{{ $type->name }} ({{ submittedAssessmentCountByCategory($district->id, $type->id) }})</p>
+                                                <p>{{ $type->name }} ({{ submittedAssessmentCountByCategory($district->id, $type->id, $status="") }} - {{ submittedAssessmentCountByCategory($district->id, $type->id, $status="Approved") }})</p>
                                                 @empty
                                                 @endforelse
                                             </div>
@@ -48,7 +48,7 @@
                                             <div class="col-md-3 mt-3">
                                                 <h5 class="fw-bold mt-1 text-success">State Wise Consolidate</h5>
                                                 @forelse($types as $key1 => $type)
-                                                <p>{{ $type->name }} ({{ submittedAssessmentCountByCategory(0 , $type->id) }})</p>
+                                                <p>{{ $type->name }} ({{ submittedAssessmentCountByCategory(0 , $type->id, $status="") }} - {{ submittedAssessmentCountByCategory(0 , $type->id, $status="Approved") }})</p>
                                                 @empty
                                                 @endforelse
                                             </div>
@@ -111,8 +111,10 @@
                                                     <th>Submitted At</th>
                                                     <th>Approved At</th>
                                                     <th>Status</th>
+                                                    <th>Active?</th>
                                                     <th>View</th>
                                                     <th>Edit</th>
+                                                    <th>Delete</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -129,8 +131,10 @@
                                                     <td>{{ $survey->created_at->format('d, M Y h:i a') }}</td>
                                                     <td>{{ $survey->approved_at }}</td>
                                                     <td><a href="{{ route('form.survey.approve', encrypt($survey->id)) }}">{{ $survey->status }}</a></td>
+                                                    <td>{!! $survey->status() !!}</td>
                                                     <td><a href="{{ route('form.survey.view', encrypt($survey->id)) }}">View</a></td>
                                                     <td class="text-center"><a href="{{ route('form.survey.edit', encrypt($survey->id)) }}">Edit</a></td>
+                                                    <td class="text-center"><a href="{{ route('form.survey.delete', encrypt($survey->id)) }}" class="dlt">Delete</a></td>
                                                 </tr>
                                                 @empty
                                                 @endforelse

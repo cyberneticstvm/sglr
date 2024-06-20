@@ -15,20 +15,24 @@ function statuses()
     return array('Pending' => 'Pending', 'Approved' => 'Approved');
 }
 
-function submittedAssessmentCount($district)
+function submittedAssessmentCount($district, $status)
 {
     return Survey::when(in_array(Auth::user()->role, ['Administrator', 'Staff', 'Approver']), function ($q) use ($district) {
         return $q->whereIn('created_by', User::where('district_id', $district)->pluck('id'));
     })->when(in_array(Auth::user()->role, ['Public']), function ($q) {
         return $q->where('created_by', Auth::user()->id);
+    })->when($status, function ($q) use ($status) {
+        return $q->where('status', $status);
     })->count('id');
 }
 
-function submittedAssessmentCountByCategory($district, $type)
+function submittedAssessmentCountByCategory($district, $type, $status)
 {
     return Survey::when(in_array(Auth::user()->role, ['Administrator', 'Staff', 'Approver']), function ($q) use ($district, $type) {
         return $q->whereIn('created_by', User::whereIn('district_id', ($district > 0) ? [$district] : District::all()->pluck('id'))->pluck('id'))->whereIn('created_by', User::where('institution_type', $type)->pluck('id'));
     })->when(in_array(Auth::user()->role, ['Public']), function ($q) {
         return $q->where('created_by', Auth::user()->id);
+    })->when($status, function ($q) use ($status) {
+        return $q->where('status', $status);
     })->count('id');
 }

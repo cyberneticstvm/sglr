@@ -23,4 +23,9 @@ class Survey extends Model
     {
         return $this->hasMany(Score::class, 'survey_id', 'id');
     }
+
+    public function status()
+    {
+        return ($this->deleted_at) ? "<span class='text-danger'>Deleted</span>" : "<span class='text-success'>Active</span>";
+    }
 }

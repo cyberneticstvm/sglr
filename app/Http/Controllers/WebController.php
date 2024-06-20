@@ -88,7 +88,7 @@ class WebController extends Controller
     public function dashboard()
     {
 
-        $surveys = Survey::when(Auth::user()->role == 'Public', function ($q) {
+        $surveys = Survey::withTrashed()->when(Auth::user()->role == 'Public', function ($q) {
             return $q->where('created_by', Auth::id());
         })->when(in_array(Auth::user()->role, ['Staff', 'Approver']), function ($q) {
             return $q->whereIn('created_by', User::where('role', 'Public')->where('district_id', Auth::user()->district_id)->pluck('id'));
@@ -403,5 +403,11 @@ class WebController extends Controller
     {
         $lbody = LocalBody::where('district_id', $district)->get();
         return response()->json($lbody);
+    }
+
+    public function surveyDelete($id)
+    {
+        Survey::findOrFail(decrypt($id))->delete();
+        return redirect()->back()->with("success", "Assessment deleted successfully");
     }
 }
