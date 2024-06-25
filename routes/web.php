@@ -46,6 +46,7 @@ Route::prefix('/')->middleware(['web', 'auth'])->group(function () {
         Route::get('survey/view/{id}', 'surveyView')->name('form.survey.view');
 
         Route::get('survey/delete/{id}', 'surveyDelete')->name('form.survey.delete')->middleware([AdminUser::class]);
+        Route::get('survey/revoke/approval/{id}', 'revokeSurveyApproval')->name('form.survey.revoke.approval')->middleware([AdminUser::class]);
     });
 });
 

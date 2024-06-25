@@ -405,6 +405,28 @@ class WebController extends Controller
         return response()->json($lbody);
     }
 
+    public function revokeSurveyApproval($id)
+    {
+        $survey = Survey::where('status', 'approved')->where('id', decrypt($id))->firstOrFail();
+        try {
+            DB::transaction(function () use ($survey) {
+                $survey->update([
+                    'status' => 'Pending',
+                    'total_score_approved' => 0,
+                    'approved_by' => NULL,
+                    'approved_at' => NULL,
+                ]);
+                Score::where('survey_id', $survey->id)->update([
+                    'approved_answer' => NULL,
+                    'approved_score' => 0,
+                ]);
+            });
+        } catch (Exception $e) {
+            return redirect()->back()->with("error", $e->getMessage());
+        }
+        return redirect()->back()->with("success", "Approval reset successfully");
+    }
+
     public function surveyDelete($id)
     {
         Survey::findOrFail(decrypt($id))->delete();
