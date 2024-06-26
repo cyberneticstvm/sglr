@@ -97,7 +97,9 @@ class WebController extends Controller
             return $q->where('id', Auth::user()->district_id);
         })->get();
         $types = InstitutionType::all();
-        return view('web.dashboard', compact('surveys', 'districts', 'types'));
+        $tot = Survey::all()->count();
+        $approved = Survey::where('status', 'Approved')->count();
+        return view('web.dashboard', compact('surveys', 'districts', 'types', 'tot', 'approved'));
     }
 
     public function survey()
@@ -364,7 +366,7 @@ class WebController extends Controller
                 'remember_token' => $remember_token,
             ]);
             $user = User::where('email', $request->email)->where('remember_token', $remember_token)->firstOrFail();
-            Mail::to($user->email)->cc('vijoysasidharan@yahoo.com')->send(new PasswordResetEmail($user));
+            Mail::to($user->email)->send(new PasswordResetEmail($user));
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
         }

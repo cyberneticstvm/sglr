@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3 mt-3">
-                                                <h5 class="fw-bold mt-1 text-success">State Wise Consolidate</h5>
+                                                <h5 class="fw-bold mt-1 text-success">State Wise Consolidate ({{ $tot }} - {{ $approved }})</h5>
                                                 @forelse($types as $key1 => $type)
                                                 <p>{{ $type->name }} ({{ submittedAssessmentCountByCategory(0 , $type->id, $status="") }} - {{ submittedAssessmentCountByCategory(0 , $type->id, $status="Approved") }})</p>
                                                 @empty
