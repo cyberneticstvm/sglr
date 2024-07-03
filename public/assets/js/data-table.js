@@ -12,7 +12,7 @@
       },
       "layout": {
         topStart: {
-          buttons: ['pdf']
+          buttons: ['pdf', 'excel']
         }
       }
     });
